@@ -10,19 +10,13 @@
 
 ### 3. 적용 기술 스택
 1. Spring Boot 3
-2. Kafka
-- 1:1 매칭의 채팅 서비스에 적용하기 위해 사용. 
-3. FCM(Firebase Cloud Messaging)
-- 이벤트 발생 시 알람을 주기 위해 사용.
-4. CoolSMS
-- 휴대전화 인증을 위해 사용.
+2. Kafka - 채팅 서비스에 적용하기 위해 사용. 
+3. FCM(Firebase Cloud Messaging) - 이벤트 알람 기능.
+4. CoolSMS - 휴대전화 인증 기능.
 
 ### 4. 적용 도구 및 라이브러리
 1. Spring Data JPA
-2. Spring Batch
-- 게시판에 하루에 하나씩 시스템에서 오늘의 주제를 선정해서 게시글을 만드는 기능을 적용하기 위해 사용.
-3. Spring Security
-- JWT 기반 사용자 인증 기능을 위해 사용.
-4. Mail
-- 이메일 인증번호 발송을 위해 사용.
+2. Spring Batch - 게시판에 하루에 하나씩 시스템에서 오늘의 주제를 선정해서 게시글을 만드는 기능을 적용하기 위해 사용.
+3. Spring Security - JWT 기반 사용자 인증 기능을 위해 사용.
+4. Mail - 이메일 인증번호 발송을 위해 사용.
 5. Quartz
