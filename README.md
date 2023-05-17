@@ -20,3 +20,5 @@
 3. Spring Security - JWT 기반 사용자 인증 기능을 위해 사용.
 4. Mail - 이메일 인증번호 발송을 위해 사용.
 5. Quartz
+
+### 5. [Schema](./knkn-er-diagram.xml)
