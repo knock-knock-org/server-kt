@@ -4,9 +4,10 @@ plugins {
 	id("org.springframework.boot") version "3.0.6"
 	id("io.spring.dependency-management") version "1.1.0"
 	id("org.asciidoctor.jvm.convert") version "3.3.2"
-	kotlin("jvm") version "1.7.22"
-	kotlin("plugin.spring") version "1.7.22"
-	kotlin("plugin.jpa") version "1.7.22"
+	kotlin("jvm") version "1.8.21"
+	kotlin("plugin.spring") version "1.8.21"
+	kotlin("plugin.jpa") version "1.8.21"
+	kotlin("plugin.serialization") version "1.8.21"
 }
 
 group = "com.knockknock"
@@ -43,7 +44,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.apache.kafka:kafka-streams")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation ("com.h2database:h2")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 	implementation("org.springframework.kafka:spring-kafka")
+	implementation("com.github.f4b6a3:ulid-creator:5.2.0")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
