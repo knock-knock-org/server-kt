@@ -7,4 +7,10 @@ import java.util.*
 
 @Repository
 interface AccountRepository : JpaRepository<Account, UUID> {
+
+    fun existsByEmail(email: String): Boolean
+
+
+    fun findByEmail(email: String): Account
+
 }

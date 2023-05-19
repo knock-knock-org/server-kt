@@ -1,11 +1,13 @@
 package com.knockknock.server.entity
 
 import jakarta.persistence.*
+import lombok.RequiredArgsConstructor
 import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
 @Table(name = "accounts")
+@RequiredArgsConstructor
 class Account(
         email: String,
         phoneNo: String,
@@ -15,7 +17,7 @@ class Account(
         gender: String?,
         job: String?,
         lastLoginTimestamp: LocalDateTime?,
-        hashtagApperanceYn: Boolean
+        hashtagApperanceYn: Boolean?
 ): PrimaryKeyEntity() {
 
     @Column(nullable = false, unique = true)
@@ -25,7 +27,7 @@ class Account(
     var phoneNo: String = phoneNo
 
     @Column
-    var password: String = password?: ""
+    var password: String? = password
 
     @Column(nullable = false, unique = true)
     var nickname: String = nickname
@@ -43,10 +45,10 @@ class Account(
     var regTimestamp: LocalDateTime = LocalDateTime.now()
 
     @Column(nullable = true)
-    var lastLoginTimestamp: LocalDateTime = lastLoginTimestamp?: LocalDateTime.now();
+    var lastLoginTimestamp: LocalDateTime? = lastLoginTimestamp
 
     @Column(nullable = false)
-    var hashtagApperanceYn: Boolean = hashtagApperanceYn
+    var hashtagApperanceYn: Boolean = hashtagApperanceYn?: true
 
     @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL], mappedBy = "author")
     protected val mutableBoards: MutableList<Board> = mutableListOf()
