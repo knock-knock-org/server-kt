@@ -3,21 +3,28 @@ package com.knockknock.server
 import com.knockknock.server.entity.Account
 import com.knockknock.server.service.AccountService
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.MethodOrderer
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
+import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.TestMethodOrder
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit.jupiter.SpringExtension
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 @SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class AccountAggregationServiceTest @Autowired constructor(
-         val accountService: AccountService
+@ExtendWith(SpringExtension::class)
+@TestMethodOrder(OrderAnnotation::class)    // Equivalent with OrderAnnotation.class in java code.
+class AccountAggregationServiceTests(
+        @Autowired val accountService: AccountService
         ){
 
     @Test
+    @Order(10)
     @DisplayName("Create Account")
     fun 계정_생성() {
         val account: Account = Account(
@@ -38,6 +45,7 @@ class AccountAggregationServiceTest @Autowired constructor(
     }
 
     @Test
+    @Order(20)
     fun 이메일로_계정정보_찾기(){
         var email = "tjrkd222@gmail.com"
         val account: Account = accountService.getAccountByEmail(email);
@@ -46,6 +54,7 @@ class AccountAggregationServiceTest @Autowired constructor(
     }
 
     @Test
+    @Order(30)
     fun 이메일_중복확인(){
         var email = "tjrkd222@gmail.com"
 
