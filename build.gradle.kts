@@ -48,6 +48,7 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 	implementation("org.springframework.kafka:spring-kafka")
 	implementation("com.github.f4b6a3:ulid-creator:5.2.0")
+	implementation("net.nurigo:sdk:4.3.0")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")

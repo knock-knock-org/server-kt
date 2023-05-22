@@ -13,4 +13,7 @@ interface AccountRepository : JpaRepository<Account, UUID> {
 
     fun findByEmail(email: String): Account
 
+
+    fun existsByNickname(nickname: String): Boolean
+
 }

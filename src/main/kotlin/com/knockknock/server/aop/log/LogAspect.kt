@@ -36,12 +36,6 @@ class LogAspect (
         try {
             var proceed = joinPoint.proceed()
 
-            log.info(joinPoint.target.javaClass.toString());
-            log.info(joinPoint.target.javaClass.toGenericString());
-            for(annotation in joinPoint.target.javaClass.annotations){
-                log.info(annotation.toString());
-            }
-
             val methodSignature = joinPoint.signature as MethodSignature;
             val custom = methodSignature.method.getAnnotation(CustomLog::class.java);
 

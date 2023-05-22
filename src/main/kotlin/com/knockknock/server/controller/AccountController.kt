@@ -17,13 +17,11 @@ class AccountController(
 ){
 
     @PostMapping("/sign-up")
-    fun signUp(@RequestBody account: Account): ResponseEntity<Account> {
+    fun signUp(@RequestBody account: Account): ResponseEntity<Account> = accountAggregationService.saveAccount(account)
 
-        return accountAggregationService.saveAccount(account)
-    }
+    @GetMapping("/check/mail/{email}")
+    fun checkMailDuplicate(@PathVariable email: String): ResponseEntity<Boolean> = accountAggregationService.checkUniqueEmail(email)
 
-    @GetMapping("/check-mail/{email}")
-    fun checkMailDuplicate(@PathVariable email: String): ResponseEntity<Boolean>{
-        return accountAggregationService.checkUniqueEmail(email)
-    }
+    @GetMapping("/check/nickname/{nickname}")
+    fun checkNicknameDuplicate(@PathVariable nickname: String): ResponseEntity<Boolean> = accountAggregationService.checkUniqueNickname(nickname)
 }

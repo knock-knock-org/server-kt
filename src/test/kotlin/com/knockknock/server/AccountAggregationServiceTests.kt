@@ -55,11 +55,41 @@ class AccountAggregationServiceTests(
 
     @Test
     @Order(30)
-    fun 이메일_중복확인(){
+    fun 존재하는_이메일_중복확인(){
         var email = "tjrkd222@gmail.com"
 
         val existEmail = accountService.checkUniqueEmail(email);
 
         assertEquals(true, existEmail);
+    }
+
+    @Test
+    @Order(31)
+    fun 존재하지않는_이메일_중복확인(){
+        var email = "tjrkd221@gmail.com"
+
+        val existEmail = accountService.checkUniqueEmail(email);
+
+        assertEquals(false, existEmail);
+    }
+
+    @Test
+    @Order(40)
+    fun 존재하는_닉네임_중복확인(){
+        var nickname = "inseoking"
+
+        val existNickname = accountService.checkUniqueNickname(nickname);
+
+        assertEquals(true, existNickname);
+    }
+
+    @Test
+    @Order(41)
+    fun 존재하지않는_닉네임_중복확인(){
+        var nickname = "inseoking2"
+
+        val existNickname = accountService.checkUniqueNickname(nickname);
+
+        assertEquals(false, existNickname);
     }
 }

@@ -28,7 +28,7 @@ class AccountAggregationService (
         return ResponseEntity(result, HttpStatus.CREATED)
     }
 
-    fun checkUniqueEmail(email: String): ResponseEntity<Boolean> {
-        return ResponseEntity(accountService.checkUniqueEmail(email), HttpStatus.OK)
-    }
+    fun checkUniqueEmail(email: String): ResponseEntity<Boolean> = ResponseEntity(accountService.checkUniqueEmail(email), HttpStatus.OK)
+
+    fun checkUniqueNickname(nickname: String): ResponseEntity<Boolean> = ResponseEntity(accountService.checkUniqueEmail(nickname), HttpStatus.OK)
 }

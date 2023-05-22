@@ -21,9 +21,9 @@ class AccountService(
         return accountRepository.save(account)
     }
 
-    fun checkUniqueEmail(email: String): Boolean {
-        return accountRepository.existsByEmail(email)
-    }
+    fun checkUniqueEmail(email: String): Boolean = accountRepository.existsByEmail(email)
+
+    fun checkUniqueNickname(nickname: String): Boolean = accountRepository.existsByNickname(nickname)
 
     fun getAccountByEmail(email: String): Account {
         return accountRepository.findByEmail(email)
