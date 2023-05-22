@@ -14,7 +14,6 @@ class AccountService(
         private val passwordEncoder: PasswordEncoder
 ) {
 
-    @LogExecutionTime
     fun saveAccount(account: Account): Account {
         val encryptedPassword = passwordEncoder.encode(account.password);
         account.password = encryptedPassword;
