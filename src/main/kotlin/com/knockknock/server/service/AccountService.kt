@@ -1,5 +1,6 @@
 package com.knockknock.server.service
 
+import com.knockknock.server.aop.log.LogExecutionTime
 import com.knockknock.server.entity.Account
 import com.knockknock.server.repository.AccountRepository
 import com.knockknock.server.utils.EncryptionUtils
@@ -13,6 +14,7 @@ class AccountService(
         private val passwordEncoder: PasswordEncoder
 ) {
 
+    @LogExecutionTime
     fun saveAccount(account: Account): Account {
         val encryptedPassword = passwordEncoder.encode(account.password);
         account.password = encryptedPassword;

@@ -24,7 +24,7 @@ abstract class PrimaryKeyEntity: Persistable<UUID> {
     private val id: UUID = UlidCreator.getMonotonicUlid().toUuid();
 
     @Transient
-    private  var _isNew = true;
+    private var _isNew = true;
 
     override fun getId(): UUID = id;
 
