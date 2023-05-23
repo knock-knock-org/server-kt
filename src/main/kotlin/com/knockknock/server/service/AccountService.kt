@@ -1,10 +1,7 @@
 package com.knockknock.server.service
 
-import com.knockknock.server.aop.log.LogExecutionTime
-import com.knockknock.server.entity.Account
+import com.knockknock.server.entity.account.Account
 import com.knockknock.server.repository.AccountRepository
-import com.knockknock.server.utils.EncryptionUtils
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 

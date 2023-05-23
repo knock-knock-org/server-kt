@@ -1,7 +1,7 @@
 package com.knockknock.server.controller
 
 import com.knockknock.server.serviceAggregation.AccountAggregationService
-import com.knockknock.server.entity.Account
+import com.knockknock.server.entity.account.Account
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

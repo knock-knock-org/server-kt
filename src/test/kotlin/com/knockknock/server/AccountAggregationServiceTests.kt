@@ -1,13 +1,13 @@
 package com.knockknock.server
 
-import com.knockknock.server.entity.Account
+import com.knockknock.server.entity.account.Account
 import com.knockknock.server.service.AccountService
+import com.knockknock.server.serviceAggregation.AccountAggregationService
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.TestMethodOrder
 import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.extension.Extensions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.context.SpringBootTest
@@ -20,7 +20,8 @@ import kotlin.test.assertEquals
 @ExtendWith(SpringExtension::class)
 @TestMethodOrder(OrderAnnotation::class)    // Equivalent with OrderAnnotation.class in java code.
 class AccountAggregationServiceTests(
-        @Autowired val accountService: AccountService
+        @Autowired val accountService: AccountService,
+        @Autowired val accountAggregationService: AccountAggregationService
         ){
 
     @Test
@@ -91,5 +92,13 @@ class AccountAggregationServiceTests(
         val existNickname = accountService.checkUniqueNickname(nickname);
 
         assertEquals(false, existNickname);
+    }
+
+    @Test
+    @Order(50)
+    fun SMS_인증번호_발송() {
+        var phoneNo: String = "010-2776-5098"
+
+        accountAggregationService.sendAuthCode(phoneNo);
     }
 }

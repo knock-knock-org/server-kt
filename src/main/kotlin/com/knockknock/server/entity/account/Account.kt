@@ -1,8 +1,9 @@
-package com.knockknock.server.entity
+package com.knockknock.server.entity.account
 
+import com.knockknock.server.entity.Board
+import com.knockknock.server.entity.PrimaryKeyEntity
 import jakarta.persistence.*
 import lombok.RequiredArgsConstructor
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity

@@ -17,3 +17,6 @@ spring:
   profiles:
     include:
       - secret
+
+expire-time:
+  auth: 180000
