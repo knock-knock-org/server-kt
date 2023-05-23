@@ -13,6 +13,8 @@ import net.nurigo.sdk.message.request.SingleMessageSendingRequest
 import net.nurigo.sdk.message.response.SingleMessageSentResponse
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.mail.javamail.JavaMailSender
+import org.springframework.mail.javamail.MimeMailMessage
 import java.time.LocalDateTime
 import java.util.*
 
@@ -21,6 +23,7 @@ class AccountAuthenticationService (
         @Value("\${coolsms.api}") val apiKey: String,
         @Value("\${coolsms.api-secret}") val apiSecretKEy: String,
         @Value("\${coolsms.url}") val url: String,
+        private var javaMailSender: JavaMailSender,
         private val authenticationRepository: AccountAuthenticationRepository
         ){
 
@@ -59,4 +62,9 @@ class AccountAuthenticationService (
         fun checkTooManyRequestSendingSMS(phoneNo: String): Long = authenticationRepository.countDistinctByPhoneNoAndExpireTimeGreaterThanEqual(phoneNo, LocalDateTime.now().minusMinutes(5))
 
         fun saveAuthentication(auth: AccountAuthentication): AccountAuthentication = authenticationRepository.save(auth);
+
+        fun sendEmailAuthCode() {
+                var message = javaMailSender.createMimeMessage()
+
+        }
 }
