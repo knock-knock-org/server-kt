@@ -22,6 +22,7 @@ class MailConfig(
         javaMailSender.javaMailProperties.setProperty("mail.smtp.starttls.enable", "true")
         javaMailSender.username = username
         javaMailSender.password = password
+        javaMailSender.host = "smtp.gmail.com"
 
         return javaMailSender
     }

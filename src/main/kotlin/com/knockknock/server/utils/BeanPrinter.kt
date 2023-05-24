@@ -4,7 +4,7 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Component
 
-@Component
+//@Component
 class BeanPrinter(
         val applicationContext: ApplicationContext
 ): CommandLineRunner {

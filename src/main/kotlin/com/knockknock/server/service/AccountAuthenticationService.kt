@@ -15,6 +15,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMailMessage
+import org.springframework.mail.javamail.MimeMessageHelper
 import java.time.LocalDateTime
 import java.util.*
 
@@ -64,7 +65,15 @@ class AccountAuthenticationService (
         fun saveAuthentication(auth: AccountAuthentication): AccountAuthentication = authenticationRepository.save(auth);
 
         fun sendEmailAuthCode() {
-                var message = javaMailSender.createMimeMessage()
+                val code = this.makeAuthCode();
+
+                var message = javaMailSender.createMimeMessage();
+                var helper : MimeMessageHelper = MimeMessageHelper(message, false, "UTF-8");
+                helper.setSubject("이메일 인증")
+                helper.setText("[KnockKnock]\n 인증 번호는 ${code}입니다.")
+                helper.setTo("tjrkd222@gmail.com")
+
+                javaMailSender.send(message);
 
         }
 }

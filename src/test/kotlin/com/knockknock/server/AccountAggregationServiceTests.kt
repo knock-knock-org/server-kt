@@ -1,6 +1,7 @@
 package com.knockknock.server
 
 import com.knockknock.server.entity.account.Account
+import com.knockknock.server.service.AccountAuthenticationService
 import com.knockknock.server.service.AccountService
 import com.knockknock.server.serviceAggregation.AccountAggregationService
 import org.junit.jupiter.api.DisplayName
@@ -21,6 +22,7 @@ import kotlin.test.assertEquals
 @TestMethodOrder(OrderAnnotation::class)    // Equivalent with OrderAnnotation.class in java code.
 class AccountAggregationServiceTests(
         @Autowired val accountService: AccountService,
+        @Autowired val accountAuthenticationService: AccountAuthenticationService,
         @Autowired val accountAggregationService: AccountAggregationService
         ){
 
@@ -100,5 +102,11 @@ class AccountAggregationServiceTests(
         var phoneNo: String = "010-2776-5098"
 
         accountAggregationService.sendAuthCode(phoneNo);
+    }
+
+    @Test
+    @Order(60)
+    fun 이메일_발송() {
+        accountAuthenticationService.sendEmailAuthCode();
     }
 }
