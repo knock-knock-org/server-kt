@@ -64,16 +64,20 @@ class AccountAuthenticationService (
 
         fun saveAuthentication(auth: AccountAuthentication): AccountAuthentication = authenticationRepository.save(auth);
 
-        fun sendEmailAuthCode() {
-                val code = this.makeAuthCode();
+        fun sendEmailAuthCode(email: String) {
+                val code = this.makeAuthCode()
 
                 var message = javaMailSender.createMimeMessage();
                 var helper : MimeMessageHelper = MimeMessageHelper(message, false, "UTF-8");
                 helper.setSubject("이메일 인증")
                 helper.setText("[KnockKnock]\n 인증 번호는 ${code}입니다.")
-                helper.setTo("tjrkd222@gmail.com")
+                helper.setTo(email)
 
                 javaMailSender.send(message);
+
+        }
+
+        fun matchAuthCodeByEmail(email: String, code: String) {
 
         }
 }
