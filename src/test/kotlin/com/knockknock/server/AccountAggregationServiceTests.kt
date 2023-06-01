@@ -107,6 +107,6 @@ class AccountAggregationServiceTests(
     @Test
     @Order(60)
     fun 이메일_발송() {
-        accountAuthenticationService.sendEmailAuthCode();
+        accountAuthenticationService.sendEmailAuthCode("tjrkd222@gmail.com");
     }
 }

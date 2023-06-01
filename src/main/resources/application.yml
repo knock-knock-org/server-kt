@@ -18,6 +18,12 @@ spring:
     include:
       - secret
 
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
 
 expire-time:
   auth: 180000
