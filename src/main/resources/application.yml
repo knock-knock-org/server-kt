@@ -18,12 +18,16 @@ spring:
     include:
       - secret
 
+# Reference: https://colabear754.tistory.com/99#2.%20Swagger%20%EC%82%AC%EC%9A%A9%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EA%B8%B0%EB%B3%B8%20%EC%84%A4%EC%A0%95
 springdoc:
-  api-docs:
-    enabled: true
+  packages-to-scan: com.knockknock.server.controller
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
   swagger-ui:
-    enabled: true
-
+    path: /
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
 
 expire-time:
   auth: 180000

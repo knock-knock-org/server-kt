@@ -1,5 +1,6 @@
 package com.knockknock.server.config
 
+import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.servers.Server
@@ -14,17 +15,13 @@ class SwaggerConfig {
 
     val logger = LoggerFactory.getLogger(javaClass)
 
+    private fun apiInfo() = Info()
+            .title("KnockKnock API Docs")
+            .description("넉넉 API 문서")
+            .version("0.0.3")
+
     @Bean
-    fun openAPI(): OpenAPI {
-
-        var config = OpenAPI()
-
-        var info = Info()
-        info.title = "Knock Knock API Document"
-        info.version = "0.3"
-
-        config.info = info
-
-        return config
-    }
+    fun openAPI(): OpenAPI = OpenAPI()
+            .components(Components())
+            .info(apiInfo())
 }
