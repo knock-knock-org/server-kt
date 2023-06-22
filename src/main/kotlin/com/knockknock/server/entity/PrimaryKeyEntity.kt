@@ -1,10 +1,8 @@
 package com.knockknock.server.entity
 
-import com.fasterxml.jackson.databind.ser.Serializers
-import com.github.f4b6a3.ulid.Ulid
 import com.github.f4b6a3.ulid.UlidCreator
-import com.knockknock.server.utils.SerializedClass
 import com.knockknock.server.utils.getSerializedObject
+import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.persistence.Column
 import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
@@ -17,6 +15,10 @@ import java.io.Serializable
 import java.util.Objects
 import java.util.UUID
 
+/**
+ * 스포카 기술 블로그 참조.
+ * https://spoqa.github.io/2022/08/16/kotlin-jpa-entity.html
+ * */
 @MappedSuperclass
 abstract class PrimaryKeyEntity: Persistable<UUID> {
     @Id
@@ -24,6 +26,7 @@ abstract class PrimaryKeyEntity: Persistable<UUID> {
     private val id: UUID = UlidCreator.getMonotonicUlid().toUuid();
 
     @Transient
+    @Schema(hidden = true)
     private var _isNew = true;
 
     override fun getId(): UUID = id;
