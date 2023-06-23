@@ -24,4 +24,7 @@ class AccountController(
 
     @GetMapping("/check/nickname/{nickname}")
     fun checkNicknameDuplicate(@PathVariable nickname: String): ResponseEntity<Boolean> = accountAggregationService.checkUniqueNickname(nickname)
+
+    @GetMapping("/send/{phoneNo}")
+    fun sendAuthCodeToPhoneNo(@PathVariable phoneNo: String): ResponseEntity<Boolean> = accountAggregationService.sendAuthCode(phoneNo)
 }

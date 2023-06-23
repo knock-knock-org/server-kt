@@ -21,6 +21,7 @@ import java.util.UUID
  * */
 @MappedSuperclass
 abstract class PrimaryKeyEntity: Persistable<UUID> {
+
     @Id
     @Column(columnDefinition = "uuid")
     private val id: UUID = UlidCreator.getMonotonicUlid().toUuid();

@@ -40,6 +40,9 @@ class AccountAggregationService (
 
     fun checkUniqueNickname(nickname: String): ResponseEntity<Boolean> = ResponseEntity(accountService.checkUniqueEmail(nickname), HttpStatus.OK)
 
+    /**
+     * TODO: async로 전송해야 함. => Boolean 보내는 것말고 다른 방법으로 변경해야 할듯. 다른 사이트 확인해보자.
+     * */
     @Transactional
     fun sendAuthCode(phoneNo: String): ResponseEntity<Boolean> {
 
