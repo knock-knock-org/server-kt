@@ -44,11 +44,12 @@ class AccountAggregationService (
      * TODO: async로 전송해야 함. => Boolean 보내는 것말고 다른 방법으로 변경해야 할듯. 다른 사이트 확인해보자.
      * */
     @Transactional
-    fun sendAuthCode(phoneNo: String): ResponseEntity<Boolean> {
+    @Async
+    fun sendAuthCode(phoneNo: String): Unit {
 
         //10분 이내 5번 이상 요청했으면 block(이번 요청 포함)
         var recentRequestCnt = authenticationService.checkTooManyRequestSendingSMS(phoneNo)
-        if(recentRequestCnt >= 4) return ResponseEntity(false, HttpStatus.LOCKED)
+        if(recentRequestCnt >= 4) return
 
         //업로드
         val code = authenticationService.makeAuthCode()
@@ -63,6 +64,6 @@ class AccountAggregationService (
         //문자보내기
         authenticationService.sendPhoneAuthCode(phoneNo, code)
 
-        return ResponseEntity(true, HttpStatus.OK)
+        return
     }
 }

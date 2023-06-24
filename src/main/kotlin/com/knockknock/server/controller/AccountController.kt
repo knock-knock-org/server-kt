@@ -2,6 +2,7 @@ package com.knockknock.server.controller
 
 import com.knockknock.server.serviceAggregation.AccountAggregationService
 import com.knockknock.server.entity.account.Account
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -26,5 +27,9 @@ class AccountController(
     fun checkNicknameDuplicate(@PathVariable nickname: String): ResponseEntity<Boolean> = accountAggregationService.checkUniqueNickname(nickname)
 
     @GetMapping("/send/{phoneNo}")
-    fun sendAuthCodeToPhoneNo(@PathVariable phoneNo: String): ResponseEntity<Boolean> = accountAggregationService.sendAuthCode(phoneNo)
+    fun sendAuthCodeToPhoneNo(@PathVariable phoneNo: String): ResponseEntity<Void> {
+        accountAggregationService.sendAuthCode(phoneNo)
+
+        return ResponseEntity(HttpStatus.OK)
+    }
 }
