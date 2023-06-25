@@ -1,5 +1,6 @@
 package com.knockknock.server.service
 
+import com.knockknock.server.aop.exception.BaseException
 import com.knockknock.server.entity.account.AccountAuthentication
 import com.knockknock.server.repository.AccountAuthenticationRepository
 import com.knockknock.server.utils.convertPhoneNoWithoutDash
@@ -35,7 +36,7 @@ class AccountAuthenticationService (
         )
 
         fun sendPhoneAuthCode(phoneNo: String, authCode: String): SingleMessageSentResponse? {
-                if(!validatePhoneNoFormat(phoneNo)) throw IllegalArgumentException(phoneNo)
+                if(!validatePhoneNoFormat(phoneNo)) throw BaseException()
 
                 val phoneNoWithoutDash = convertPhoneNoWithoutDash(phoneNo)
 
