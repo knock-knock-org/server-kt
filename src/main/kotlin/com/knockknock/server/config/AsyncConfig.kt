@@ -28,5 +28,6 @@ class AsyncConfig {
     @Async("taskExecutor")
     fun asyncMethodWithConfiguredExecutor() {
         println("Thread Run::" + Thread.currentThread().name)
+
     }
 }
